@@ -18,20 +18,30 @@ __author__ = "Michael J. Hart"
 __email__ = "MichaelJHart760@gmail.com" 
 
 # queries
-Q1 = "select articles.title, count(*) as num"
-Q2 = " from articles, log"
-Q3 = " where path != '/' and SUBSTR(path, 10) = slug"
-Q4 = " group by articles.title"
-Q5 = " order by num desc limit 3;"
-QUERY1 = Q1 + Q2 + Q3 + Q4 + Q5
+Q1_1 = "select articles.title, count(*) as num"
+Q1_2 = " from articles, log"
+Q1_3 = " where path != '/' and SUBSTR(path, 10) = slug"
+Q1_4 = " group by articles.title"
+Q1_5 = " order by num desc limit 3;"
+QUERY1 = Q1_1 + Q1_2 + Q1_3 + Q1_4 + Q1_5
+Q2_1 = "select authors.name, count(*) as num"
+Q2_2 = " from articles, authors, log"
+Q2_3 = " where path != '/' and SUBSTR(path, 10) = slug"
+Q2_4 = " and authors.id = articles.author group by authors.name"
+Q2_5 = " order by num desc;"
+QUERY2 = Q2_1 + Q2_2 + Q2_3 + Q2_4 + Q2_5
 
 # perform queries
 results1 = query(QUERY1)
 results1_str = '\n'.join(str(x) for x in results1)
-full_answer1 = Q1+"\n"+Q2+"\n"+Q3+"\n"+Q4+"\n"+Q5+"\n\n"+ results1_str
+full_answer1 = Q1_1+"\n"+Q1_2+"\n"+Q1_3+"\n"+Q1_4+"\n"+Q1_5+"\n\n"+ results1_str
+
+results2 = query(QUERY2)
+results2_str = '\n'.join(str(x) for x in results2)
+full_answer2 = Q2_1+"\n"+Q2_2+"\n"+Q2_3+"\n"+Q2_4+"\n"+Q2_5+"\n\n"+ results2_str
 
 # write the results to a file
 clear_results()
 write_results(1, full_answer1)
-#write_results(2, "Poofing!")
+write_results(2, full_answer2)
 #write_results(3, "Eating!")

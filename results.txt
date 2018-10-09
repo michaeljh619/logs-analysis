@@ -10,3 +10,16 @@ select articles.title, count(*) as num
 ('Bears love berries, alleges bear', 253801L)
 ('Bad things gone, say good people', 170098L)
 
+2.) Who are the most popular authors?
+
+select authors.name, count(*) as num
+ from articles, authors, log
+ where path != '/' and SUBSTR(path, 10) = slug
+ and authors.id = articles.author group by authors.name
+ order by num desc;
+
+('Ursula La Multa', 507594L)
+('Rudolf von Treppenwitz', 423457L)
+('Anonymous Contributor', 170098L)
+('Markoff Chaney', 84557L)
+
