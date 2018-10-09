@@ -1,9 +1,12 @@
 1.) What are the three most popular articles?
-Testing!
 
-2.) Who are the most popular authors?
-Poofing!
+select articles.title, count(*) as num
+ from articles, log
+ where path != '/' and SUBSTR(path, 10) = slug
+ group by articles.title
+ order by num desc limit 3;
 
-3.) On which days did more than 1% of requests lead to errors?
-Eating!
+('Candidate is jerk, alleges rival', 338647L)
+('Bears love berries, alleges bear', 253801L)
+('Bad things gone, say good people', 170098L)
 

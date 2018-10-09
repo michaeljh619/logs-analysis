@@ -1,5 +1,11 @@
 #!/usr/bin/env python
 
+'''
+A file dedicated to easily writing out answers to the questions asked
+for this project. When write_results is called, it will automatically
+write out to a file called 'results.txt'.
+'''
+
 # result headers
 RESULT_HEADER_1 = "1.) What are the three most popular articles?\n"
 RESULT_HEADER_2 = "2.) Who are the most popular authors?\n"
@@ -14,6 +20,7 @@ def clear_results():
     results_file.close()
 
 # write to file
+# result_num: numbered question you are answering
 def write_results(result_num, query_results):
     # open file
     results_file = open(RESULTS_FILE_NAME, "a")
@@ -25,5 +32,6 @@ def write_results(result_num, query_results):
     else:
         results_file.write(RESULT_HEADER_3)
     # write results and close
+    results_file.write("\n")
     results_file.write(query_results + "\n\n")
     results_file.close()
