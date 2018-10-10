@@ -1,4 +1,8 @@
 1.) What are the three most popular articles?
+ANSWER:
+	1 - Candidate is jerk, alleges rival
+	2 - Bears love berries, alleges bear
+	3 - Bad things gone, say good people
 
 select articles.title, count(*) as num
  from articles, log
@@ -11,6 +15,11 @@ select articles.title, count(*) as num
 ('Bad things gone, say good people', 170098L)
 
 2.) Who are the most popular authors?
+ANSWER:
+	1 - Ursula La Multa
+	2 - Rudolf von Treppenwitz
+	3 - Anonymous Contributor
+	4 - Markoff Chaney
 
 select authors.name, count(*) as num
  from articles, authors, log
@@ -22,4 +31,27 @@ select authors.name, count(*) as num
 ('Rudolf von Treppenwitz', 423457L)
 ('Anonymous Contributor', 170098L)
 ('Markoff Chaney', 84557L)
+
+3.) On which days did more than 1% of requests lead to errors?
+ANSWER: 
+	On 07/17/2016
+
+select subq1.date, 
+((CAST(subq1.num AS float))
+/(CAST(subq1.num + subq2.num AS float))) 
+as percent from 
+(select time::timestamp::date as date, 
+count(*) as num from log 
+where status = '404 NOT FOUND' group by date) 
+as subq1, 
+(select time::timestamp::date as date, 
+count(*) as num from log 
+where status = '200 OK' group by date) 
+as subq2 
+where subq1.date = subq2.date 
+and ((CAST(subq1.num AS float))
+/(CAST(subq1.num + subq2.num AS float))) >= 0.01 
+order by percent desc;
+
+(datetime.date(2016, 7, 17), 0.0226268624680273)
 
