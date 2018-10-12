@@ -19,19 +19,27 @@ def clear_results():
     results_file = open(RESULTS_FILE_NAME, "w")
     results_file.close()
 
-# write to file
+# prints results
 # result_num: numbered question you are answering
-def write_results(result_num, query_results):
-    # open file
-    results_file = open(RESULTS_FILE_NAME, "a")
-    # write header
+# query_results: the results of the query in a string
+# write_to_file: whether results will be written to a file or printed
+def print_results(result_num, query_results, write_to_file = False):
+    # get header
+    header = ""
     if result_num == 1:
-        results_file.write(RESULT_HEADER_1)
+        header = RESULT_HEADER_1
     elif result_num == 2:
-        results_file.write(RESULT_HEADER_2)
+        header = RESULT_HEADER_2
     else:
-        results_file.write(RESULT_HEADER_3)
-    # write results and close
-    results_file.write("\n")
-    results_file.write(query_results + "\n\n")
-    results_file.close()
+        header = RESULT_HEADER_3
+    # string to write
+    results_str = header + "\n" + query_results +"\n\n"
+    # if write to file
+    if write_to_file:
+        # open file, write header
+        results_file = open(RESULTS_FILE_NAME, "a")
+        # write results and close
+        results_file.write(results_str)
+        results_file.close()
+    else:
+        print(results_str) 

@@ -10,13 +10,20 @@ newsdata database.
 '''
 
 # imports
-from WriteFile import write_results, clear_results
+from PrintResults import print_results, clear_results
 from ReadQuery import read_query_file
 from QueryHandler import query
+from optparse import OptionParser
 
 # authorship
 __author__ = "Michael J. Hart"
 __email__ = "MichaelJHart760@gmail.com" 
+
+# command line options
+parser = OptionParser()
+parser.add_option("-f", "--file", action="store_true", 
+	help="write results to results.txt", default=False)
+(options, args) = parser.parse_args()
 
 # query files
 QUERY_FILE_1 = "query1.txt"
@@ -28,8 +35,6 @@ query_str_1 = read_query_file(QUERY_FILE_1)
 query_str_2 = read_query_file(QUERY_FILE_2)
 query_str_3 = read_query_file(QUERY_FILE_3)
 
-print(query_str_1)
-
 # perform queries
 results1 = query(query_str_1)
 results2 = query(query_str_2)
@@ -40,8 +45,9 @@ results_str_1 = '\n'.join(str(x) for x in results1)
 results_str_2 = '\n'.join(str(x) for x in results2)
 results_str_3 = '\n'.join(str(x) for x in results3)
 
-# write the results to a file
-clear_results()
-write_results(1, results_str_1)
-write_results(2, results_str_2)
-write_results(3, results_str_3)
+# print the results, may be to a file depending on CL options
+if options.file:
+    clear_results()
+print_results(1, results_str_1, options.file)
+print_results(2, results_str_2, options.file)
+print_results(3, results_str_3, options.file)
