@@ -1,0 +1,15 @@
+select subq1.date,
+((CAST(subq1.num AS float))
+/(CAST(subq1.num + subq2.num AS float))) as percent from
+(select time::timestamp::date as date,
+count(*) as num from log
+where status = '404 NOT FOUND'
+group by date) as subq1,
+(select time::timestamp::date as date,
+count(*) as num from log
+where status = '200 OK'
+group by date) as subq2
+where subq1.date = subq2.date
+and ((CAST(subq1.num AS float))
+/(CAST(subq1.num + subq2.num AS float))) >= 0.01
+order by percent desc;

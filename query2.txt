@@ -1,0 +1,6 @@
+select authors.name, count(*) as num
+from articles, authors, log
+where path != '/' and SUBSTR(path, 10) = slug
+and authors.id = articles.author
+group by authors.name
+order by num desc;

@@ -1,0 +1,6 @@
+select articles.title, count(*) as num
+from articles, log
+where path != '/'
+and SUBSTR(path, 10) = slug
+group by articles.title
+order by num desc limit 3;
