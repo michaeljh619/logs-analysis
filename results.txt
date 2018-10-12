@@ -11,7 +11,7 @@
 ('Anonymous Contributor', 170098L)
 ('Markoff Chaney', 84557L)
 
-3.) On which days did more than 1% of requests lead to errors?
+3.) Which days did 1% or more of requests lead to errors?
 
 (datetime.date(2016, 7, 17), 0.0226268624680273)
 

@@ -51,3 +51,5 @@ if options.file:
 print_results(1, results_str_1, options.file)
 print_results(2, results_str_2, options.file)
 print_results(3, results_str_3, options.file)
+if options.file:
+    print("Results written to file: 'results.txt'")
