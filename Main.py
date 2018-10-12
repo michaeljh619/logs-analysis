@@ -17,12 +17,12 @@ from optparse import OptionParser
 
 # authorship
 __author__ = "Michael J. Hart"
-__email__ = "MichaelJHart760@gmail.com" 
+__email__ = "MichaelJHart760@gmail.com"
 
 # command line options
 parser = OptionParser()
-parser.add_option("-f", "--file", action="store_true", 
-	help="write results to results.txt", default=False)
+parser.add_option("-f", "--file", action="store_true",
+                  help="write results to results.txt", default=False)
 (options, args) = parser.parse_args()
 
 # query files

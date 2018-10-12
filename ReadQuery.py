@@ -6,6 +6,7 @@ The one function in this file will return the query as a string
 so it can be used in the QueryHandler.
 '''
 
+
 # read file, return query in a string
 def read_query_file(file_name):
     # return string set up
@@ -20,6 +21,6 @@ def read_query_file(file_name):
     # close file
     finally:
         query_file.close()
-    
+
     # return string
     return file_contents

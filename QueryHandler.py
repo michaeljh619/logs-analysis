@@ -12,9 +12,10 @@ import psycopg2
 # Constants
 DBNAME = "news"
 
+
 def query(query_string):
     """Queries the newsdata database with the specified query"""
-    #connect
+    # connect
     db = psycopg2.connect(database=DBNAME)
     c = db.cursor()
 
