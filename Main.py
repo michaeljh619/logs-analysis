@@ -43,11 +43,6 @@ if __name__ == "__main__":
     results2 = query(query_str_2)
     results3 = query(query_str_3)
 
-    # turn query lists to strings
-    #results_str_1 = '\n'.join(str(x) for x in results1)
-    #results_str_2 = '\n'.join(str(x) for x in results2)
-    #results_str_3 = '\n'.join(str(x) for x in results3)
-
     # print the results, may be to a file depending on CL options
     if options.file:
         clear_results()
