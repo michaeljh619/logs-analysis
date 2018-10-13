@@ -1,17 +1,17 @@
 1.) What are the three most popular articles?
 
-('Candidate is jerk, alleges rival', 338647L)
-('Bears love berries, alleges bear', 253801L)
-('Bad things gone, say good people', 170098L)
+1- The article 'Candidate is jerk, alleges rival' has a total of 338647 views.
+2- The article 'Bears love berries, alleges bear' has a total of 253801 views.
+3- The article 'Bad things gone, say good people' has a total of 170098 views.
 
 2.) Who are the most popular authors?
 
-('Ursula La Multa', 507594L)
-('Rudolf von Treppenwitz', 423457L)
-('Anonymous Contributor', 170098L)
-('Markoff Chaney', 84557L)
+1- The author 'Ursula La Multa' has a total of 507594 views to their articles.
+2- The author 'Rudolf von Treppenwitz' has a total of 423457 views to their articles.
+3- The author 'Anonymous Contributor' has a total of 170098 views to their articles.
+4- The author 'Markoff Chaney' has a total of 84557 views to their articles.
 
 3.) Which days did 1% or more of requests lead to errors?
 
-(datetime.date(2016, 7, 17), 0.0226268624680273)
+1- On 07/17/16 there was a total of 2.2626862468 percent of requests that led to errors.
 
