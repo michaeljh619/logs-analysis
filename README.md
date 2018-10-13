@@ -7,6 +7,11 @@ These queries will help answer the following set of questions:
 
 
 - Running the program:
+	First step, you will need to set up the sql database using psql.
+Included in the zip is a file 'newsdata.sql' that will perform this step.
+All you need to do is run the psql command 'psql -d news -f newsdata.sql'
+on the command line for the tables to be set up. Now the python code can
+be run against the database.
 	Simply run the 'main.py' as an executable with './Main.py'. The
 results of the queries will be neatly printed to the console. If you wish
 to have the results printed to a file instead, simply run the program with
