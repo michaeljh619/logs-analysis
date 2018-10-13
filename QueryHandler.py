@@ -16,9 +16,13 @@ DBNAME = "news"
 def query(query_string):
     """Queries the newsdata database with the specified query"""
     # connect
-    db = psycopg2.connect(database=DBNAME)
-    c = db.cursor()
+    try:
+        db = psycopg2.connect(database=DBNAME)
+    except psycopg2.DatabaseError, e:
+        print("An error occurred while attempting to open database!")
 
+    # cursor
+    c = db.cursor()
     # query
     c.execute(query_string)
 
